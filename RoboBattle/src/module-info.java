@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author rotie
+ *
+ */
+module RobotBattle {
+}
