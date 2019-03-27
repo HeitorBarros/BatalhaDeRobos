@@ -10,11 +10,11 @@ public class ConstrutorDeRoboAleatorio extends ConstrutorDeRobo{
 	public Robo construirRobo() {
 		Random rand = new Random();
 		String nome = "Robo"+rand.nextInt(rand.nextInt(5)+1);
-		Peca cabeca = new Peca(rand.nextInt(10), rand.nextInt(10), rand.nextInt(10));
-		Peca tronco = new Peca(rand.nextInt(10), rand.nextInt(10), rand.nextInt(10));
-		Peca pernas = new Peca(rand.nextInt(10), rand.nextInt(10), rand.nextInt(10));
-		Peca bracoEsquerdo = new Peca(rand.nextInt(10), rand.nextInt(10), rand.nextInt(10));
-		Peca bracoDireito = new Peca(rand.nextInt(10), rand.nextInt(10), rand.nextInt(10));
+		Peca cabeca = new Peca(rand.nextInt(10), rand.nextInt(10), rand.nextInt(10), rand.nextInt(10));
+		Peca tronco = new Peca(rand.nextInt(10), rand.nextInt(10), rand.nextInt(10), rand.nextInt(10));
+		Peca pernas = new Peca(rand.nextInt(10), rand.nextInt(10), rand.nextInt(10), rand.nextInt(10));
+		Peca bracoEsquerdo = new Peca(rand.nextInt(10), rand.nextInt(10), rand.nextInt(10), rand.nextInt(10));
+		Peca bracoDireito = new Peca(rand.nextInt(10), rand.nextInt(10), rand.nextInt(10), rand.nextInt(10));
 		
 		return new Robo(nome, cabeca, tronco, bracoEsquerdo, bracoDireito, pernas);
 	}
