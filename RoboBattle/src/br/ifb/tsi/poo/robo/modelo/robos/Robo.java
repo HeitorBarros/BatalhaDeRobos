@@ -57,7 +57,11 @@ public class Robo implements Lutador{
 		defesa += pernas.getDefesa();
 		if(dano > defesa) {
 			danoSofrido = dano - defesa;
-			this.saude -= danoSofrido;
+			if(this.saude > danoSofrido) {
+				this.saude -= danoSofrido;
+			}else {
+				this.saude = 0;
+			}			
 		}
 		this.reduzDurabilidade(danoSofrido);
 	}

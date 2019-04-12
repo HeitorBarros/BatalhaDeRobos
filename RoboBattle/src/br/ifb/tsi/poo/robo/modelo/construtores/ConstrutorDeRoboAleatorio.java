@@ -2,12 +2,13 @@ package br.ifb.tsi.poo.robo.modelo.construtores;
 
 import java.util.Random;
 
+import br.ifb.tsi.poo.robo.modelo.robos.Lutador;
 import br.ifb.tsi.poo.robo.modelo.robos.Peca;
 import br.ifb.tsi.poo.robo.modelo.robos.Robo;
 
-public class ConstrutorDeRoboAleatorio extends ConstrutorDeRobo{
+public class ConstrutorDeRoboAleatorio extends ConstrutorDeLutador{
 
-	public Robo construirRobo() {
+	public Lutador construirLutador() {
 		Random rand = new Random();
 		String nome = "Robo"+rand.nextInt(rand.nextInt(5)+1);
 		Peca cabeca = new Peca(rand.nextInt(10), rand.nextInt(10), rand.nextInt(10), rand.nextInt(10));

@@ -1,7 +1,7 @@
 package br.ifb.tsi.poo.robo.modelo.batalhas;
 
 
-import br.ifb.tsi.poo.robo.modelo.robos.Robo;
+import br.ifb.tsi.poo.robo.modelo.robos.Lutador;
 
 public class BatalhaEmTurnos extends Batalha{
 	
@@ -9,7 +9,7 @@ public class BatalhaEmTurnos extends Batalha{
 		super();
 	}
 
-	public BatalhaEmTurnos(Robo r1, Robo r2) {
+	public BatalhaEmTurnos(Lutador r1, Lutador r2) {
 		super(r1, r2);
 	}
 
@@ -29,9 +29,9 @@ public class BatalhaEmTurnos extends Batalha{
 			}
 		}
 		if(r1.estaVivo()) {
-			System.out.println(r1.getNome()+" foi o vencedor!");
+			System.out.println("O vencedor foi "+ r1);
 		}else if(r2.estaVivo()) {
-			System.out.println(r2.getNome()+" foi o vencedor!");
+			System.out.println("O vencedor foi "+ r2);
 		} else {
 			System.out.println("EMPATE!");
 		}

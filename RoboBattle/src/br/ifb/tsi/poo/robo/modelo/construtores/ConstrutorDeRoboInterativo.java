@@ -2,10 +2,11 @@ package br.ifb.tsi.poo.robo.modelo.construtores;
 
 import java.util.Scanner;
 
+import br.ifb.tsi.poo.robo.modelo.robos.Lutador;
 import br.ifb.tsi.poo.robo.modelo.robos.Peca;
 import br.ifb.tsi.poo.robo.modelo.robos.Robo;
 
-public class ConstrutorDeRoboInterativo extends ConstrutorDeRobo {
+public class ConstrutorDeRoboInterativo extends ConstrutorDeLutador {
 	private Scanner teclado;
 
 	public ConstrutorDeRoboInterativo() {
@@ -14,7 +15,7 @@ public class ConstrutorDeRoboInterativo extends ConstrutorDeRobo {
 	}
 
 	@Override
-	public Robo construirRobo() {
+	public Lutador construirLutador() {
 		Robo r = new Robo();
 		r.setSaude(100);
 		System.out.println("Digite o nome do Robô:");

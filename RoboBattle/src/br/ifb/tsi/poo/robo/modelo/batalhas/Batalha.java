@@ -1,11 +1,12 @@
 package br.ifb.tsi.poo.robo.modelo.batalhas;
 
+import br.ifb.tsi.poo.robo.modelo.robos.Lutador;
 import br.ifb.tsi.poo.robo.modelo.robos.Robo;
 
 public abstract class Batalha {
 	
-	protected Robo r1;
-	protected Robo r2;
+	protected Lutador r1;
+	protected Lutador r2;
 	
 	public Batalha() {
 		super();
@@ -13,7 +14,7 @@ public abstract class Batalha {
 		this.r2 = new Robo();
 	}
 
-	public Batalha(Robo r1, Robo r2) {
+	public Batalha(Lutador r1, Lutador r2) {
 		super();
 		this.r1 = r1;
 		this.r2 = r2;
@@ -21,11 +22,11 @@ public abstract class Batalha {
 	
 	public abstract void iniciar();
 
-	public void setR1(Robo r1) {
+	public void setR1(Lutador r1) {
 		this.r1 = r1;
 	}
 
-	public void setR2(Robo r2) {
+	public void setR2(Lutador r2) {
 		this.r2 = r2;
 	}
 	
