@@ -11,6 +11,7 @@ import br.ifb.tsi.poo.robo.modelo.habilidades.HabilidadeComAlvoSimples;
 public class RoboComHabilidade extends Robo implements LutadorComHabilidade{
 	private int energia;
 	private List<Habilidade> habilidades;
+	private boolean modoDefesa;
 	
 	
 	
@@ -18,25 +19,52 @@ public class RoboComHabilidade extends Robo implements LutadorComHabilidade{
 			Peca pernas) {
 		super(nome, cabeca, tronco, bracoEsquerdo, bracoDireito, pernas);
 		this.setEnergia(100);
+		modoDefesa = false;
 		this.habilidades = new ArrayList<>();
-		
+		PecaComHabilidade ph;
 		if(cabeca instanceof PecaComHabilidade) {
-			this.adicionaHabilidade(((PecaComHabilidade) cabeca).getHabilidade());
+			ph = ((PecaComHabilidade) cabeca);
+			if(ph.getHabilidade() != null) {
+				this.adicionaHabilidade(ph.getHabilidade());
+			}
 		}
 		if(tronco instanceof PecaComHabilidade) {
-			this.adicionaHabilidade(((PecaComHabilidade) tronco).getHabilidade());
+			ph = ((PecaComHabilidade) tronco);
+			if(ph.getHabilidade() != null) {
+				this.adicionaHabilidade(ph.getHabilidade());
+			}
 		}
 		if(pernas instanceof PecaComHabilidade) {
-			this.adicionaHabilidade(((PecaComHabilidade) pernas).getHabilidade());
+			ph = ((PecaComHabilidade) pernas);
+			if(ph.getHabilidade() != null) {
+				this.adicionaHabilidade(ph.getHabilidade());
+			}
 		}
 		if(bracoDireito instanceof PecaComHabilidade) {
-			this.adicionaHabilidade(((PecaComHabilidade) bracoDireito).getHabilidade());
+			ph = ((PecaComHabilidade) bracoDireito);
+			if(ph.getHabilidade() != null) {
+				this.adicionaHabilidade(ph.getHabilidade());
+			}
 		}
 		if(bracoEsquerdo instanceof PecaComHabilidade) {
-			this.adicionaHabilidade(((PecaComHabilidade) bracoEsquerdo).getHabilidade());
+			ph = ((PecaComHabilidade) bracoEsquerdo);
+			if(ph.getHabilidade() != null) {
+				this.adicionaHabilidade(ph.getHabilidade());
+			}
 		}
 		
 		
+	}
+	
+	@Override
+	public void defender(int dano) {
+		if(modoDefesa) {
+			dano = (dano * 80) / 100;
+			super.defender(dano);
+			this.recuperarEnergia(10);
+		}else {
+			super.defender(dano);
+		}
 	}
 
 	@Override
@@ -45,7 +73,7 @@ public class RoboComHabilidade extends Robo implements LutadorComHabilidade{
 	}
 
 	@Override
-	public void aplicar(Habilidade h, Robo alvo) {
+	public void aplicar(Habilidade h, Lutador alvo) {
 		if(h instanceof HabilidadeComAlvoSimples) {
 			((HabilidadeComAlvoSimples) h).aplicar(this, alvo);
 		}else if (h instanceof HabilidadeComAlvoInvocador) {
@@ -55,7 +83,12 @@ public class RoboComHabilidade extends Robo implements LutadorComHabilidade{
 
 	@Override
 	public void recuperarEnergia() {
-		int grauDeRecuperacao = 20;
+		int grauDeRecuperacao = 10;
+		this.setEnergia(this.getEnergia() + grauDeRecuperacao);
+	}
+	
+	@Override
+	public void recuperarEnergia(int grauDeRecuperacao) {
 		this.setEnergia(this.getEnergia() + grauDeRecuperacao);
 	}
 
@@ -75,5 +108,22 @@ public class RoboComHabilidade extends Robo implements LutadorComHabilidade{
 	public void reduzEnergia(int energia) {
 		this.energia -= energia;
 	}
+	
+	public void habilitarModoDefesa() {
+		this.modoDefesa = true;
+	}
+	
+	public void desabilitarModoDefesa() {
+		this.modoDefesa = false;
+	}
+
+	@Override
+	public String toString() {
+		String msg = super.toString();
+		msg += " E="+this.getEnergia()+" - "+ this.getHabilidades();
+		return msg;
+	}
+	
+	
 
 }

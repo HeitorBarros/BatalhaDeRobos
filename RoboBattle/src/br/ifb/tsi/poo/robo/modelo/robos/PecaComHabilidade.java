@@ -10,6 +10,11 @@ public class PecaComHabilidade extends Peca {
 		super(ataque, defesa, velocidade, durabilidade);	
 	}
 
+	public PecaComHabilidade(Peca peca) {
+		super(peca.getAtaque(), peca.getDefesa(), peca.getVelocidade(), peca.getDurabilidade());
+
+	}
+
 	public Habilidade getHabilidade() {
 		return habilidade;
 	}
@@ -17,7 +22,13 @@ public class PecaComHabilidade extends Peca {
 	public void setHabilidade(Habilidade habilidade) {
 		this.habilidade = habilidade;
 	}
-	
+
+	@Override
+	public String toString() {
+		String msg = super.toString();
+		msg +=" "+ (this.getHabilidade()!=null?this.getHabilidade():"");
+		return msg;
+	}
 	
 
 }

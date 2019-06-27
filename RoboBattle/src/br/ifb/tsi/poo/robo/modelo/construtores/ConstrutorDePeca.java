@@ -8,7 +8,7 @@ public class ConstrutorDePeca {
 	
 	//Constroi uma peça com 12 pontos distribuídos nos
 	//Atributos
-	public static Peca construirPeca() {
+	public Peca construirPeca() {
 		Random rand = new Random();
 		int ataque = 0, defesa = 0, velocidade = 0, durabilidade = 0, durabilidadeBase = 1, n = 10;
 		for (int i = 0; i < n; i++) {

@@ -1,10 +1,10 @@
 package br.ifb.tsi.poo.robo.modelo.habilidades;
 
-import br.ifb.tsi.poo.robo.modelo.robos.Robo;
-import br.ifb.tsi.poo.robo.modelo.robos.RoboComHabilidade;
+import br.ifb.tsi.poo.robo.modelo.robos.Lutador;
+import br.ifb.tsi.poo.robo.modelo.robos.LutadorComHabilidade;
 
-public interface HabilidadeComAlvoSimples extends Habilidade {
+public abstract class HabilidadeComAlvoSimples extends Habilidade {
 
-	public void aplicar(RoboComHabilidade invocador, Robo alvo);
+	public abstract void aplicar(LutadorComHabilidade invocador, Lutador alvo);
 	
 }

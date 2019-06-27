@@ -36,32 +36,39 @@ public class Robo implements Lutador{
 		this.pernas = pernas;
 	}
 
-	@Override
-	public void atacar(Lutador alvo) {
+	private int getAtaque(){
 		int dano = 0;
 		dano += bracoDireito.getAtaque();
 		dano += bracoEsquerdo.getAtaque();
 		dano += pernas.getAtaque();
 		dano += tronco.getAtaque();
 		dano += cabeca.getAtaque();
+		return dano;
+	}
+	@Override
+	public void atacar(Lutador alvo) {
+		int dano = this.getAtaque();
 		alvo.defender(dano);
 	}
 
-	@Override
-	public void defender(int dano) {
-		int defesa = 0, danoSofrido = 0;
+	private int getDefesa() {
+		int defesa = 0;
 		defesa += bracoDireito.getDefesa();
 		defesa += bracoEsquerdo.getDefesa();
 		defesa += tronco.getDefesa();
 		defesa += cabeca.getDefesa();
 		defesa += pernas.getDefesa();
+		return defesa;
+	}
+	
+	@Override
+	public void defender(int dano) {
+		int defesa, danoSofrido = 0;
+		defesa = this.getDefesa();
+		
 		if(dano > defesa) {
 			danoSofrido = dano - defesa;
-			if(this.saude > danoSofrido) {
-				this.saude -= danoSofrido;
-			}else {
-				this.saude = 0;
-			}			
+			this.saude -= danoSofrido;
 		}
 		this.reduzDurabilidade(danoSofrido);
 	}
@@ -161,7 +168,7 @@ public class Robo implements Lutador{
 		if(this.getPernas().funciona()) { pecas +="[P]";} else { pecas +="[X]";}
 		if(this.getBracoEsquerdo().funciona()) { pecas +="[BE]";} else { pecas +="[X]";}
 		if(this.getBracoDireito().funciona()) { pecas +="[BD]";} else { pecas +="[X]";}
-		return "Robo [nome= " + nome +", saude=" + saude + "]"+pecas; 
+		return "Robo " + nome +": S=" + saude + " A="+this.getAtaque()+" D="+this.getDefesa()+" Peças="+pecas; 
 	}
 	
 	

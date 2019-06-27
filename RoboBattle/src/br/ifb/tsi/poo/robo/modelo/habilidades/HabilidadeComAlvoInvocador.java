@@ -1,8 +1,8 @@
 package br.ifb.tsi.poo.robo.modelo.habilidades;
 
-import br.ifb.tsi.poo.robo.modelo.robos.Lutador;
+import br.ifb.tsi.poo.robo.modelo.robos.Robo;
 
-public interface HabilidadeComAlvoInvocador extends Habilidade {
+public abstract class HabilidadeComAlvoInvocador extends Habilidade {
 
-	public void aplicar(Lutador Invocador);
+	public abstract void aplicar(Robo Invocador);
 }

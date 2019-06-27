@@ -9,9 +9,9 @@ public class ConstrutorDeBatalha {
 	private ConstrutorDeLutador construtorDeLutador;
 	private Batalha batalha;
 
-	public ConstrutorDeBatalha(ConstrutorDeLutador construtorDeLutador, Batalha batalha) {
+	public ConstrutorDeBatalha(ConstrutorDeLutador construtorDeRobo, Batalha batalha) {
 		super();
-		this.construtorDeLutador = construtorDeLutador;
+		this.construtorDeLutador = construtorDeRobo;
 		this.batalha = batalha;
 	}
 

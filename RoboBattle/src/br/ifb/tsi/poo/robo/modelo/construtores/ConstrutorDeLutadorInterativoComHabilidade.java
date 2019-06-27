@@ -5,32 +5,34 @@ import java.util.Scanner;
 import br.ifb.tsi.poo.robo.modelo.robos.Lutador;
 import br.ifb.tsi.poo.robo.modelo.robos.Peca;
 import br.ifb.tsi.poo.robo.modelo.robos.Robo;
+import br.ifb.tsi.poo.robo.modelo.robos.RoboComHabilidade;
 
-public class ConstrutorDeRoboInterativo extends ConstrutorDeLutador {
+public class ConstrutorDeLutadorInterativoComHabilidade extends ConstrutorDeLutador{
 	private Scanner teclado;
 
-	public ConstrutorDeRoboInterativo() {
+	public ConstrutorDeLutadorInterativoComHabilidade() {
 		super();
 		this.teclado = new Scanner(System.in);
 	}
 
 	@Override
 	public Lutador construirLutador() {
-		Robo r = new Robo();
-		r.setSaude(100);
-		System.out.println("Digite o nome do Robô:");
-		r.setNome(teclado.nextLine());
-		r.setCabeca(escolhaPeca("Cabeça"));
-		r.setTronco(escolhaPeca("Tronco"));
-		r.setPernas(escolhaPeca("Pernas"));
-		r.setBracoDireito(escolhaPeca("Braço Direito"));
-		r.setBracoEsquerdo(escolhaPeca("Braço Esquerdo"));
 		
+		
+		System.out.println("Digite o nome do Robô:");
+		String nome = teclado.nextLine();
+		Peca cabeca = escolhaPeca("Cabeça");
+		Peca tronco = escolhaPeca("Tronco");
+		Peca pernas = escolhaPeca("Pernas");
+		Peca bracoD = escolhaPeca("Braço Direito");
+		Peca bracoE = escolhaPeca("Braço Esquerdo");
+		RoboComHabilidade r = new RoboComHabilidade(nome, cabeca, tronco,bracoE,bracoD, pernas);
+		r.setSaude(100);
 		return r;
 	}
 	
 	private Peca escolhaPeca(String nomePeca) {
-		ConstrutorDePeca construtor = new ConstrutorDePeca();
+		ConstrutorDePeca construtor = new ConstrutorDePecaComHabilidade();
 		Peca p1 = construtor.construirPeca();
 		Peca p2 = construtor.construirPeca();
 		Peca p3 = construtor.construirPeca();
@@ -47,7 +49,4 @@ public class ConstrutorDeRoboInterativo extends ConstrutorDeLutador {
 		}
 		return p1;
 	}
-
-	
-	
 }
